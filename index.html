@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src = "index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="navbar">
+    <div class="subnav">
+        <div class="subnavbtn" onclick="showPage(0, null, null, null)">Information</div>
+    </div>
+
+    <div class="subnav">
+        <div class="subnavbtn" onclick="showPage(1, null, null, 'The latest 30 measurements')">Measurement</div>
+    </div>
+
+  <div class="subnav">
+    <div class="subnavbtn">Temperature </div>
+    <div class="subnav-content">
+      <a onclick="showPage(2, 'temperature', null, 'The latest 20 Temperature')">NOW</a>
+      <a onclick="showPage(3, 'temperature', '24', 'Temperature within 24 hours')">24 hour</a>
+      <a onclick="showPage(4, 'temperature', '48', 'Temperature within 48 hours')">48 hour</a>
+      <a onclick="showPage(5, 'temperature', '72', 'Temperature within 72 hours')">72 hour</a>
+      <a onclick="showPage(6, 'temperature', '168', 'Temperature within one week')">1 week</a>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <div class="subnavbtn">Wind Speed </div>
+    <div class="subnav-content">
+      <a onclick="showPage(12, 'wind_speed', null, 'The latest 20 wind speed readings')">NOW</a>
+      <a onclick="showPage(13, 'wind_speed', '24', 'Wind speed readings within 24 hours')">24 hour</a>
+      <a onclick="showPage(14, 'wind_speed', '48', 'Wind speed readings within 48 hours')">48 hour</a>
+      <a onclick="showPage(15, 'wind_speed', '72', 'Wind speed readings within 72 hours')">72 hour</a>
+      <a onclick="showPage(16, 'wind_speed', '168', 'Wind speed readings within one week')">1 week</a>
+    </div>
+  </div>
+
+  <div class="subnav">
+    <div class="subnavbtn">Selection</div>
+     <div class="subnav-content">
+      <div class="sub-subnav">
+        <button class="sub-subnavbtn">Rain</button>
+        <div class="sub-subnav-content">
+          <a onclick="showPage(22, null, null, 'The latest rainfall')">NOW</a>
+          <a onclick="showPage(23, 'rain', '24', 'Rainfall within 24 hours')">24 hour</a>
+          <a onclick="showPage(24, 'rain', '48', 'Rainfall within 48 hours')">48 hour</a>
+          <a onclick="showPage(25, 'rain', '72', 'Rainfall within 72 hours')">72 hour</a>
+          <a onclick="showPage(26, 'rain', '168', 'Rainfall within one week')">1 week</a>
+        </div>
+      </div>
+
+      <div class="sub-subnav">
+        <button class="sub-subnavbtn">Wind Speed</button>
+        <div class="sub-subnav-content">
+          <a onclick="showPage(17, null, null, 'The latest wind speed readings')">NOW</a>
+          <a onclick="showPage(18, 'wind_speed', '24', 'Wind speed readings within 24 hours')">24 hour</a>
+          <a onclick="showPage(19, 'wind_speed', '48', 'Wind speed readings within 48 hours')">48 hour</a>
+          <a onclick="showPage(20, 'wind_speed', '72', 'Wind speed readings within 72 hours')">72 hour</a>
+          <a onclick="showPage(21, 'wind_speed', '168', 'Wind speed readings within one week')">1 week</a>
+        </div>
+      </div>
+
+      <div class="sub-subnav">
+        <button class="sub-subnavbtn">Wind Direction</button>
+        <div class="sub-subnav-content">
+          <a onclick="showPage(27, null, null, 'The latest wind direction')">NOW</a>
+          <a onclick="showPage(28, 'wind_direction', '24', 'Wind direction within 24 hours')">24 hour</a>
+          <a onclick="showPage(29, 'wind_direction', '48', 'Wind direction within 48 hours')">48 hour</a>
+          <a onclick="showPage(30, 'wind_direction', '72', 'Wind direction within 72 hours')">72 hour</a>
+          <a onclick="showPage(31, 'wind_direction', '168', 'Wind direction within one week')">1 week</a>
+        </div>
+      </div>
+
+      <div class="sub-subnav">
+        <button class="sub-subnavbtn">Light</button>
+        <div class="sub-subnav-content">
+          <a onclick="showPage(32, null, null, 'The latest light measurement')">NOW</a>
+          <a onclick="showPage(33, 'light', '24', 'Light measurement within 24 hours')">24 hour</a>
+          <a onclick="showPage(34, 'light', '48', 'Light measurement within 48 hours')">48 hour</a>
+          <a onclick="showPage(35, 'light', '72', 'Light measurement within 72 hours')">72 hour</a>
+          <a onclick="showPage(36, 'light', '168', 'Light measurement within one week')">1 week</a>
+        </div>
+      </div>
+
+      <div class="sub-subnav">
+        <button class="sub-subnavbtn">Temperature</button>
+        <div class="sub-subnav-content">
+          <a onclick="showPage(7, null, null, 'The latest temperature')">NOW</a>
+          <a onclick="showPage(8, 'temperature', '24', 'Temperature within 24 hours')">24 hour</a>
+          <a onclick="showPage(9, 'temperature', '48', 'Temperature within 48 hours')">48 hour</a>
+          <a onclick="showPage(10, 'temperature', '72', 'Temperature within 72 hours')">72 hour</a>
+          <a onclick="showPage(11, 'temperature', '168', 'Temperature within one week')">1 week</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="author_info" class="container">
+    <pre>
+
+      Author: Haiyuan Lin
+      Email: haiyuan.lin@tuni.fi
+
+
+      Welcome to our website! Here's some useful information to help you navigate it:
+      1. The Measurement menu displays the 30 most recent measurements.
+      2. There are dropdown menus for Temperature and Wind Speed,
+         allowing you to select data for those specific time.
+      3. To access more data types, use the Selection menu.
+         Each data type has its own dropdown menu.
+      4. Inside each table, there is a sorting function that allows you to sort
+         the data by different criteria. You can choose to sort the data in either
+         increasing or decreasing order, depending on your preference.
+
+
+      Notification:
+      Please note that all graphs and tables used on this website were created by the author.
+
+    </pre>
+</div>
+
+<br>
+
+<table id="table" ></table>
+
+<div id="notice" style="display: none">Sorry, we don't have any data at the right moment</div>
+
+<div id="title"></div>
+
+<div id="error_message"></div>
+
+</body>
+</html>
